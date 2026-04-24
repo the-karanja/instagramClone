@@ -47,6 +47,8 @@ import { ref } from 'vue'
 import UploadPreview from './UploadPreview.vue'
 import MetadataForm from './MetadataForm.vue'
 import { uploadPost } from '@/api/auth'
+import { useRouter } from 'vue-router'
+const router = useRouter()
 
 const file       = ref(null)
 const previewUrl = ref(null)
@@ -130,7 +132,7 @@ const upload = async () => {
     metadata.value = { title: '', caption: '', location: '', people: '' }
 
     success.value = true
-    setTimeout(() => success.value = false, 3000)
+    setTimeout(() => router.push('/dashboard'), 2000)
 
   } catch (err) {
     error.value = err.message
